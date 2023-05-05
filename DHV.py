@@ -16,7 +16,6 @@ fig.suptitle("Laptop Price "
              "Predictions\n Name: Sam Philip Solo, Student ID: 22013137\n",
              fontsize=20, fontweight='bold', fontname='Times New Roman')
 
-
 # Plotting various plots into the dashboard.
 # 1. Pie Chart
 ax1 = fig.add_subplot(grid[1, 1])
@@ -65,10 +64,14 @@ ax5.set_ylabel('Average Price')
 ax5.set_title('Average Price by Category', weight='bold')
 ax5.set_xticklabels(category_prices.index, rotation=45)
 
-# Bar plot
+# 4. Bar plot
 ax4 = fig.add_subplot(grid[2, 0])
+
+# Filtering values from dataframe
 cpu = data[['CPU', 'Manufacturer']].groupby('CPU').agg(
     'count').sort_values('Manufacturer', ascending=False).reset_index()
+
+# Plotting Bar graph.
 sns.barplot(data=cpu.head(10), x='Manufacturer', y='CPU', ax=ax4)
 ax4.set_title('CPU vs Total Count of Manufacturers', weight='bold')
 
